@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const defaultProps = {
   north: false,
@@ -13,7 +13,7 @@ function RoadTile({
   south,
   west,
 }) {
-  const stroke = "red";
+  const stroke = "white";
   const strokeWidth = 10;
   const halfStrokeWidth = strokeWidth / 2;
   const w = 200; // width
@@ -21,7 +21,7 @@ function RoadTile({
   const hwp = hw + halfStrokeWidth; // halfWidthPlus
   const hwm = hw - halfStrokeWidth; // halfWidthMinus
   return (
-    <svg height={w} width={w}>
+    <svg viewBox="0 0 200 200">
       <rect x="0" height={w} y="0" width={w} style={{fill: "grey"}}/>
       {north && (
         <path d={`M${hw} 0 L${hw} ${hwp}`} stroke={stroke} strokeWidth={strokeWidth} />
