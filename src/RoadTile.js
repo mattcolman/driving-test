@@ -22,7 +22,6 @@ function RoadTile({
   const hwm = hw - halfStrokeWidth; // halfWidthMinus
   return (
     <svg viewBox="0 0 200 200">
-      <rect x="0" height={w} y="0" width={w} style={{fill: "grey"}}/>
       {north && (
         <path d={`M${hw} 0 L${hw} ${hwp}`} stroke={stroke} strokeWidth={strokeWidth} />
       )}

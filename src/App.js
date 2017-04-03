@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import logo from './logo.svg';
 import './App.css';
-import RoadTile from './RoadTile';
-import styled from 'styled-components';
+import StyledRoadTile from './StyledRoadTile';
 
-const Wrapper = styled.div`
-  width: 100px,
-  height: 100px,
+const grid = [
+  '- - X - X',
+  '- - X X -',
+  '- - X - -',
+  '- X X - -',
+  'X - X - -',
+];
+
+const Grid = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Row = styled.div`
+  display: flex;
+`;
+
+const Terrain = styled.div`
+  width: 100px;
+  height: 100px;
+  background: white;
 `;
 
 class App extends Component {
-  // const tileWidth = 100;
+
   render() {
     return (
       <div className="App">
@@ -18,9 +36,22 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <Wrapper>
-          <RoadTile south east />
-        </Wrapper>
+        <Grid>
+          {grid.map(row => (
+            <Row>
+              {row.split(' ').map(tile => (
+                (tile === 'X') ? (
+                  <StyledRoadTile
+                    south
+                    east
+                  />
+                ) : (
+                  <Terrain />
+                )
+              ))}
+            </Row>
+          ))}
+        </Grid>
       </div>
     );
   }
