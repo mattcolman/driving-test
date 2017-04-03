@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { get } from 'lodash';
 import styled from 'styled-components';
 import logo from './logo.svg';
 import './App.css';
 import StyledRoadTile from './StyledRoadTile';
 
 const grid = [
-  '- - X - X',
-  '- - X X -',
+  '- - - - X',
+  '- - X X X',
   '- - X - -',
-  '- X X - -',
-  'X - X - -',
-];
+  '- - X X X',
+  'X X X - -',
+].map(row => row.split(' '));
 
 const Grid = styled.div`
   display: flex;
@@ -27,23 +28,37 @@ const Terrain = styled.div`
   background: white;
 `;
 
+function getNorth(i, j) {
+  return get(grid, `[${i-1}][${j}]`) === 'X';
+}
+
+function getEast(i, j) {
+  return get(grid, `[${i}][${j+1}]`) === 'X';
+}
+
+function getSouth(i, j) {
+  return get(grid, `[${i+1}][${j}]`) === 'X';
+}
+
+function getWest(i, j) {
+  return get(grid, `[${i}][${j-1}]`) === 'X';
+}
+
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
         <Grid>
-          {grid.map(row => (
+          {grid.map((row, i) => (
             <Row>
-              {row.split(' ').map(tile => (
+              {row.map((tile, j) => (
                 (tile === 'X') ? (
                   <StyledRoadTile
-                    south
-                    east
+                    north={getNorth(i, j)}
+                    east={getEast(i, j)}
+                    south={getSouth(i, j)}
+                    west={getWest(i, j)}
                   />
                 ) : (
                   <Terrain />

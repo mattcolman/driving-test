@@ -26,13 +26,13 @@ function RoadTile({
         <path d={`M${hw} 0 L${hw} ${hwp}`} stroke={stroke} strokeWidth={strokeWidth} />
       )}
       {east && (
-        <path d={`M0 ${hw} L${hwp} ${hw}`} stroke={stroke} strokeWidth={strokeWidth} />
+        <path d={`M${hwm} ${hw} L${w} ${hw}`} stroke={stroke} strokeWidth={strokeWidth} />
       )}
       {south && (
         <path d={`M${hw} ${hwm} L${hw} ${w}`} stroke={stroke} strokeWidth={strokeWidth} />
       )}
       {west && (
-        <path d={`M${hwm} ${hw} L${w} ${hw}`} stroke={stroke} strokeWidth={strokeWidth} />
+        <path d={`M0 ${hw} L${hwp} ${hw}`} stroke={stroke} strokeWidth={strokeWidth} />
       )}
     </svg>
   );
