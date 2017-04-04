@@ -29,19 +29,39 @@ const Terrain = styled.div`
 `;
 
 function getNorth(i, j) {
-  return get(grid, `[${i-1}][${j}]`) === 'X';
+  return get(grid, `[${i-1}][${j}]`) === 'X' || (
+    i === 0 &&
+    getSouth(i, j) &&
+    !getWest(i, j) &&
+    !getEast(i, j)
+  );
 }
 
 function getEast(i, j) {
-  return get(grid, `[${i}][${j+1}]`) === 'X';
+  return get(grid, `[${i}][${j+1}]`) === 'X' || (
+    j === grid[i].length - 1 &&
+    getWest(i, j) &&
+    !getNorth(i, j) &&
+    !getSouth(i, j)
+  );
 }
 
 function getSouth(i, j) {
-  return get(grid, `[${i+1}][${j}]`) === 'X';
+  return get(grid, `[${i+1}][${j}]`) === 'X' || (
+    i === grid.length - 1 &&
+    getNorth(i, j) &&
+    !getWest(i, j) &&
+    !getEast(i, j)
+  );
 }
 
 function getWest(i, j) {
-  return get(grid, `[${i}][${j-1}]`) === 'X';
+  return get(grid, `[${i}][${j-1}]`) === 'X' || (
+    j === 0 &&
+    getEast(i, j) &&
+    !getNorth(i, j) &&
+    !getSouth(i, j)
+  );
 }
 
 class App extends Component {
