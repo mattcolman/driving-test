@@ -1,8 +1,11 @@
 import React from 'react';
 
-export default function Car(props) {
+export default function Car({
+  className,
+  onRef,
+}) {
   return (
-    <svg id="car" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width={200} height={200} {...props}>
+    <svg id="car" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width={200} height={200} ref={onRef} className={className}>
       <defs>
         <style dangerouslySetInnerHTML={{__html: ".cls-1{fill:currentColor;}.cls-1,.cls-10,.cls-11,.cls-12,.cls-13,.cls-2,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{stroke:#000;}.cls-1,.cls-13,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{stroke-miterlimit:10;}.cls-2{fill:currentColor;}.cls-3{stroke:currentColor;}.cls-4{fill:#ffb600;}.cls-5{fill:currentColor;}.cls-6{fill:#fff;}.cls-7{fill:currentColor;}.cls-8{fill:currentColor;}.cls-10,.cls-11,.cls-12,.cls-13{fill:none;}.cls-10,.cls-11,.cls-12{stroke-linejoin:round;}.cls-10{stroke-width:0.5px;}.cls-12,.cls-13{stroke-width:0.25px;}" }} />
       </defs>

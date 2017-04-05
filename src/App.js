@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
 import styled from 'styled-components';
-import logo from './logo.svg';
+import { TimelineMax } from 'gsap';
 import './App.css';
 import StyledRoadTile from './StyledRoadTile';
 import Car from './Car';
@@ -76,10 +76,15 @@ const BlueCar = styled(Car)`
 
 class App extends Component {
 
+  componentDidMount() {
+    const tl = new TimelineMax();
+    tl.to(this.car, 1, {x: 200});
+  }
+
   render() {
     return (
       <div className="App">
-        <BlueCar />
+        <BlueCar onRef={ref => this.car = ref} />
         <Grid>
           {grid.map((row, i) => (
             <Row>
