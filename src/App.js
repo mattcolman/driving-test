@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import logo from './logo.svg';
 import './App.css';
 import StyledRoadTile from './StyledRoadTile';
+import Car from './Car';
 
 const grid = [
   '- - - - X',
@@ -64,11 +65,21 @@ function getWest(i, j) {
   );
 }
 
+const BlueCar = styled(Car)`
+  position: absolute;
+  color: red;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+`;
+
 class App extends Component {
 
   render() {
     return (
       <div className="App">
+        <BlueCar />
         <Grid>
           {grid.map((row, i) => (
             <Row>
