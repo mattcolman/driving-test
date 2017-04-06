@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { TimelineMax } from 'gsap';
 import './App.css';
 import StyledRoadTile from './StyledRoadTile';
-import Car from './Car';
+import Car from './Car3';
 
 const grid = [
   '- - - - X',
@@ -67,7 +67,7 @@ function getWest(i, j) {
 
 const BlueCar = styled(Car)`
   position: absolute;
-  color: red;
+  color: blue;
   top: 0;
   left: 0;
   width: 100px;
@@ -84,7 +84,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BlueCar onRef={ref => this.car = ref} />
+        <BlueCar
+          onRef={ref => this.car = ref}
+          rightBlinker
+        />
         <Grid>
           {grid.map((row, i) => (
             <Row>
